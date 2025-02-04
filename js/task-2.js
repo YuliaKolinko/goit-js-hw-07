@@ -25,27 +25,26 @@ const images = [
   },
 ];
 const gallery = document.querySelector(".gallery");
-
-images.forEach(({ url, alt }) => {
+const imagesArray = images.map(image => {
   const li = document.createElement("li");
   const img = document.createElement("img");
-  img.src = url;
-  img.alt = alt;
+  img.src = image.url;
+  img.alt = image.alt;
   img.width = 360;
   img.height = 300;
   li.append(img);
-  gallery.append(li);
+  return li;
 });
+gallery.append(...imagesArray);
 
-// Другий варіант
-// const imagesArray = images.map(image => {
+// другий варіант у 2 строки
+// images.forEach(({ url, alt }) => {
 //   const li = document.createElement("li");
 //   const img = document.createElement("img");
-//   img.src = image.url;
-//   img.alt = image.alt;
+//   img.src = url;
+//   img.alt = alt;
 //   img.width = 360;
 //   img.height = 300;
 //   li.append(img);
-//   return li;
+//   gallery.append(li);
 // });
-// gallery.append(...imagesArray);
